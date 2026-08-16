@@ -1,0 +1,63 @@
+```
+# Dependencies
+node_modules/
+venv/
+.venv/
+__pycache__/
+*.egg-info/
+.Python/
+
+# Build artifacts
+dist/
+build/
+target/
+.npm/
+
+# Python
+*.pyc
+*.pyo
+*.pyd
+*.py.class
+*.so
+*.dylib
+*.dll
+*.exe
+*.out
+*.o
+*.obj
+*.a
+*.lib
+*.pdb
+*.ilk
+
+# Logs
+*.log
+logs/
+*.tmp
+
+# Environment
+.env
+.env.local
+*.env.*
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Coverage
+coverage/
+htmlcov/
+.coverage
+*.coverage
+
+# Cache
+.mypy_cache/
+.pytest_cache/
+.gradle/
+.cargo/
+```
