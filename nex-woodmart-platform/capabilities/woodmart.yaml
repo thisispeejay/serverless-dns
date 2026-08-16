@@ -1,0 +1,274 @@
+# NEX WoodMart Capabilities Registry
+# Version: 1.0.0
+# Compatible with: WoodMart 7.x
+
+header_builder:
+  id: "woodmart_header_builder"
+  name: "WoodMart Header Builder"
+  provider: "woodmart"
+  description: "Drag-and-drop header builder with 30+ elements"
+  
+  elements:
+    - id: "logo"
+      name: "Logo"
+      type: "branding"
+      settings: [logo_image, logo_width, logo_height, sticky_logo, mobile_logo]
+    
+    - id: "navigation"
+      name: "Navigation Menu"
+      type: "menu"
+      settings: [menu_select, horizontal_alignment, vertical_alignment, mega_menu_support]
+    
+    - id: "search"
+      name: "Search Form"
+      type: "functional"
+      styles: [default, minimal, button, text, category_select]
+      settings: [ajax_search, search_post_types]
+    
+    - id: "cart"
+      name: "Shopping Cart"
+      type: "woocommerce"
+      styles: [widget, mini_cart, side_cart]
+      settings: [show_count, show_total, open_on_add]
+    
+    - id: "wishlist"
+      name: "Wishlist"
+      type: "functional"
+      requires: "woodmart_wishlist_module"
+    
+    - id: "compare"
+      name: "Compare"
+      type: "functional"
+      requires: "woodmart_compare_module"
+    
+    - id: "account"
+      name: "Account Link"
+      type: "user"
+      styles: [link, dropdown]
+    
+    - id: "contact"
+      name: "Contact Info"
+      type: "informational"
+    
+    - id: "social_links"
+      name: "Social Links"
+      type: "social"
+    
+    - id: "html_block"
+      name: "HTML Block"
+      type: "custom"
+    
+    - id: "mobile_nav_toggle"
+      name: "Mobile Navigation Toggle"
+      type: "mobile"
+  
+  layout_options:
+    positions: [top, middle, bottom]
+    columns: "1-12"
+    sticky_options: [disabled, desktop, mobile, both]
+
+product_grid:
+  id: "woodmart_product_grid"
+  name: "Product Grid"
+  provider: "woodmart"
+  description: "Advanced product grid with multiple layouts and filters"
+  
+  layouts: [grid, list, masonry, carousel, justified]
+  
+  card_styles: [default, minimal, gallery, hovered, classic, modern]
+  
+  product_info:
+    position_options: [above_title, below_title, hidden]
+    elements: [sku, categories, price, add_to_cart, wishlist_button, swatches, stock_status, rating]
+  
+  image_settings:
+    aspect_ratios: ["1:1", "4:3", "3:4", "16:9"]
+    hover_effects: [none, zoom, swap, gallery]
+  
+  pagination:
+    types: [numbered, load_more, infinite_scroll, slider]
+
+shop_filters:
+  id: "woodmart_shop_filters"
+  name: "Shop Filters"
+  provider: "woodmart"
+  description: "AJAX-powered product filtering system"
+  
+  filter_types:
+    - id: "attributes"
+      name: "Product Attributes"
+      display_modes: [checkboxes, color_swatches, image_swatches, labels, dropdown]
+    
+    - id: "price"
+      name: "Price Range"
+      display_modes: [slider, input_fields, predefined_ranges]
+    
+    - id: "categories"
+      name: "Product Categories"
+      display_modes: [checkboxes, dropdown, tree]
+    
+    - id: "rating"
+      name: "Rating Filter"
+      display_modes: [stars, checkboxes]
+    
+    - id: "in_stock"
+      name: "In Stock Filter"
+    
+    - id: "on_sale"
+      name: "On Sale Filter"
+    
+    - id: "brands"
+      name: "Brands Filter"
+  
+  display_options:
+    sidebar_position: [left, right, hidden]
+    filter_visibility: [always_visible, collapsible, off_canvas]
+    ajax_refresh: true
+  
+  mobile_behavior:
+    drawer_mode: true
+    position: [left, right]
+
+product_page:
+  id: "woodmart_product_page"
+  name: "Product Page Layout"
+  provider: "woodmart"
+  
+  layouts: [default, full_width, centered, sticky_summary, split, horizontal, vertical_tabs, accordion]
+  
+  gallery_types: [slider, thumbnails, scrollable, masonry, grid, single_image]
+  
+  summary_position: [left, right, below]
+  
+  tabs_configuration:
+    enabled: true
+    custom_tabs: true
+    accordion_on_mobile: true
+  
+  related_products:
+    enabled: true
+    layout: "carousel"
+    count: "4-12"
+  
+  purchase_form:
+    sticky_add_to_cart: true
+    variations_style: [dropdown, color_swatch, image_swatch, label]
+
+ajax_features:
+  id: "woodmart_ajax_features"
+  name: "AJAX Features"
+  provider: "woodmart"
+  
+  features:
+    - id: "ajax_add_to_cart"
+      name: "AJAX Add to Cart"
+      behaviors: [stay_on_page, redirect_to_cart, open_side_cart]
+    
+    - id: "ajax_search"
+      name: "AJAX Search"
+      display: [dropdown, full_screen, side_panel]
+    
+    - id: "ajax_filters"
+      name: "AJAX Product Filters"
+    
+    - id: "ajax_pagination"
+      name: "AJAX Pagination"
+      styles: [load_more, infinite_scroll]
+    
+    - id: "ajax_wishlist"
+      name: "AJAX Wishlist"
+    
+    - id: "ajax_compare"
+      name: "AJAX Compare"
+
+mega_menu:
+  id: "woodmart_mega_menu"
+  name: "Mega Menu"
+  provider: "woodmart"
+  
+  column_layouts: ["1_column", "2_columns", "3_columns", "4_columns", "5_columns", "6_columns"]
+  
+  content_elements: [title, menu_items, static_block, image, image_with_text, icon_box, product_grid, category_list]
+  
+  styling:
+    width: "full_width|custom"
+    background: [color, image, pattern]
+  
+  behavior:
+    animation: [fade, slide_up, slide_down, none]
+
+mobile_navigation:
+  id: "woodmart_mobile_nav"
+  name: "Mobile Navigation"
+  provider: "woodmart"
+  
+  slideout_sidebar:
+    enabled: true
+    position: [left, right]
+    width: [narrow, medium, wide, full]
+  
+  navigation_styles: [accordion, dropdown, drawer]
+  
+  mobile_header:
+    customizable: true
+    elements: [logo, search, cart, account, menu_toggle]
+  
+  bottom_navigation:
+    enabled: true
+    items: "up_to_5"
+
+color_scheme:
+  id: "woodmart_color_scheme"
+  name: "Color Scheme"
+  provider: "woodmart"
+  
+  color_areas:
+    [main_color, secondary_color, text_color, title_color, link_color, buttons_color, sale_badge_color, footer_background]
+  
+  preset_system:
+    enabled: true
+    import_export: true
+  
+  dark_mode:
+    supported: true
+
+typography:
+  id: "woodmart_typography"
+  name: "Typography System"
+  provider: "woodmart"
+  
+  font_areas: [body_font, headings_font, menu_font, secondary_font]
+  
+  google_fonts:
+    integration: true
+  
+  font_weights: ["100", "200", "300", "400", "500", "600", "700", "800", "900"]
+  
+  responsive_sizes:
+    desktop: true
+    tablet: true
+    mobile: true
+
+layout_settings:
+  id: "woodmart_layout"
+  name: "Layout Settings"
+  provider: "woodmart"
+  
+  site_layout: [wide, boxed]
+  
+  container_width:
+    min: 1140
+    max: 1600
+    customizable: true
+  
+  page_layouts: [full_width, with_left_sidebar, with_right_sidebar]
+  
+  spacing:
+    sections_padding: true
+    rows_gap: true
+    columns_gap: true
+  
+  responsive_breakpoints:
+    desktop: 1025
+    tablet: 768
+    mobile: 480

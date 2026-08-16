@@ -1,0 +1,260 @@
+# NEX WoodMart Platform - Global Rules
+# Version: 1.0.0
+# Priority: Global (applies to all projects unless overridden)
+
+performance:
+  priority: critical
+  
+  rules:
+    - id: "no-unnecessary-containers"
+      severity: error
+      message: "Avoid creating containers solely for spacing. Use gap/margin instead."
+      check: "container_depth <= 3"
+    
+    - id: "max-dom-depth"
+      severity: warning
+      message: "DOM depth should not exceed 15 levels for performance."
+      check: "dom_depth <= 15"
+    
+    - id: "avoid-nested-sliders"
+      severity: error
+      message: "Never nest sliders within sliders. This causes performance issues and UX problems."
+    
+    - id: "minimize-widgets"
+      severity: warning
+      message: "Use native WoodMart features before adding Elementor widgets."
+      preference_order:
+        - woodmart_native
+        - woodmart_elementor_integration
+        - elementor_native
+        - elementor_pro
+        - custom
+    
+    - id: "no-excessive-animations"
+      severity: warning
+      message: "Limit animations to essential interactions. Avoid animating on scroll excessively."
+      max_animations_per_page: 10
+    
+    - id: "image-optimization"
+      severity: error
+      message: "All images must be optimized. Use WebP format where possible."
+      max_image_size_kb: 300
+    
+    - id: "avoid-absolute-positioning"
+      severity: warning
+      message: "Avoid absolute positioning unless absolutely necessary for the design."
+
+ux:
+  priority: high
+  
+  rules:
+    - id: "touch-target-size"
+      severity: error
+      message: "All interactive elements must have minimum 44x44px touch target on mobile."
+      min_touch_target: 44
+    
+    - id: "visual-hierarchy"
+      severity: warning
+      message: "Maintain clear visual hierarchy with proper heading sizes and spacing."
+    
+    - id: "consistent-spacing"
+      severity: warning
+      message: "Use consistent spacing values from the design system. Avoid arbitrary pixel values."
+      preferred_spacing_scale: [4, 8, 12, 16, 24, 32, 48, 64]
+    
+    - id: "readable-text"
+      severity: error
+      message: "Body text must be at least 16px with line-height of 1.5 or more."
+      min_font_size: 16
+      min_line_height: 1.5
+    
+    - id: "cta-prominence"
+      severity: warning
+      message: "Primary CTAs must be visually prominent and above the fold on key pages."
+    
+    - id: "form-usability"
+      severity: error
+      message: "All form fields must have visible labels. Placeholder-only labels are not acceptable."
+    
+    - id: "navigation-clarity"
+      severity: warning
+      message: "Navigation must be clear and consistent across all pages."
+    
+    - id: "mobile-first"
+      severity: high
+      message: "Design mobile-first. Ensure mobile experience is complete before enhancing for desktop."
+
+seo:
+  priority: high
+  
+  rules:
+    - id: "heading-hierarchy"
+      severity: error
+      message: "Maintain proper heading hierarchy (H1 → H2 → H3). Never skip heading levels."
+    
+    - id: "single-h1"
+      severity: error
+      message: "Each page must have exactly one H1 tag."
+    
+    - id: "semantic-html"
+      severity: warning
+      message: "Use semantic HTML elements (article, section, nav, aside) appropriately."
+    
+    - id: "image-alt-text"
+      severity: error
+      message: "All informative images must have descriptive alt text."
+    
+    - id: "internal-linking"
+      severity: warning
+      message: "Include relevant internal links on all content pages."
+    
+    - id: "breadcrumb-navigation"
+      severity: warning
+      message: "Enable breadcrumb navigation on product and category pages."
+      woodmart_setting: "wd_options[breadcrumbs_enable]"
+    
+    - id: "schema-markup"
+      severity: warning
+      message: "Ensure WooCommerce schema markup is properly configured."
+    
+    - id: "meta-descriptions"
+      severity: warning
+      message: "All pages must have unique meta descriptions between 150-160 characters."
+
+accessibility:
+  priority: high
+  
+  rules:
+    - id: "color-contrast"
+      severity: error
+      message: "Text must meet WCAG AA contrast ratio (4.5:1 for normal text, 3:1 for large text)."
+      min_contrast_ratio_normal: 4.5
+      min_contrast_ratio_large: 3
+    
+    - id: "keyboard-navigation"
+      severity: error
+      message: "All interactive elements must be keyboard accessible."
+    
+    - id: "focus-indicators"
+      severity: error
+      message: "Visible focus indicators must be present for all interactive elements."
+    
+    - id: "aria-labels"
+      severity: warning
+      message: "Buttons and links with non-descriptive text must have aria-labels."
+    
+    - id: "skip-links"
+      severity: warning
+      message: "Provide skip-to-content links for keyboard users."
+    
+    - id: "reduced-motion"
+      severity: warning
+      message: "Respect prefers-reduced-motion media query for animations."
+
+woodmart_best_practices:
+  priority: high
+  
+  rules:
+    - id: "use-native-product-grid"
+      severity: warning
+      message: "Prefer WoodMart's native product grid over custom Elementor solutions."
+    
+    - id: "use-native-filters"
+      severity: warning
+      message: "Use WoodMart's AJAX filters instead of third-party filter plugins."
+    
+    - id: "header-builder-first"
+      severity: warning
+      message: "Build headers with WoodMart Header Builder, not Elementor."
+    
+    - id: "enable-ajax-cart"
+      severity: recommendation
+      message: "Enable AJAX add-to-cart for better UX unless there's a specific reason not to."
+      woodmart_setting: "wd_options[ajax_add_to_cart]"
+    
+    - id: "mobile-separate-header"
+      severity: recommendation
+      message: "Configure a separate mobile-optimized header instead of scaling down desktop header."
+    
+    - id: "sticky-elements-caution"
+      severity: warning
+      message: "Use sticky elements sparingly. Multiple sticky elements cause conflicts."
+      max_sticky_elements: 2
+    
+    - id: "demo-content-cleanup"
+      severity: error
+      message: "Remove all demo content and placeholder text before launch."
+
+elementor_best_practices:
+  priority: medium
+  
+  rules:
+    - id: "containers-over-sections"
+      severity: warning
+      message: "Use Flexbox/Grid Containers instead of deprecated Sections."
+    
+    - id: "global-colors"
+      severity: warning
+      message: "Use global colors from Design System, not hardcoded values."
+    
+    - id: "global-typography"
+      severity: warning
+      message: "Use global typography settings, not per-widget overrides."
+    
+    - id: "responsive-mode-check"
+      severity: error
+      message: "Check all pages in mobile, tablet, and desktop modes before approval."
+    
+    - id: "avoid-inline-css"
+      severity: warning
+      message: "Avoid inline CSS overrides. Use custom classes when necessary."
+    
+    - id: "limit-widgets-per-page"
+      severity: warning
+      message: "Keep widget count reasonable. Consider splitting complex pages."
+      max_recommended_widgets: 100
+
+woocommerce:
+  priority: high
+  
+  rules:
+    - id: "checkout-optimization"
+      severity: warning
+      message: "Minimize checkout fields. Remove unnecessary fields."
+    
+    - id: "guest-checkout"
+      severity: recommendation
+      message: "Enable guest checkout unless there's a business reason to require accounts."
+    
+    - id: "cart-accessibility"
+      severity: error
+      message: "Cart icon must be visible and accessible from all pages."
+    
+    - id: "product-images-consistency"
+      severity: warning
+      message: "All product images must use consistent aspect ratios."
+    
+    - id: "clear-pricing"
+      severity: error
+      message: "Product prices must be clearly visible without interaction."
+    
+    - id: "stock-indication"
+      severity: warning
+      message: "Show stock status for products with inventory management."
+
+project_specific:
+  priority: variable
+  note: "These rules can be overridden by project-specific rules"
+  
+  rules:
+    - id: "design-system-compliance"
+      severity: error
+      message: "All designs must comply with the project's Design System tokens."
+    
+    - id: "reference-alignment"
+      severity: warning
+      message: "Design decisions should align with approved reference materials."
+    
+    - id: "brand-voice"
+      severity: warning
+      message: "Content must match the brand voice defined in project brief."
